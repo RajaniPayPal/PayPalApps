@@ -1,0 +1,191 @@
+﻿$ export PATH=$PATH:"/C/Users/rajanis/Downloads/SQLite/sqlite-tools-win32-x86-3330000/"
+> set path=%path%;C:\Users\rajanis\Downloads\SQLite\sqlite-tools-win32-x86-3330000\
+
+$ winpty sqlite3 -version
+> sqlite3 -version
+
+$ winpty sqlite3 Database.sqlite3
+> sqlite3 Database.sqlite3
+
+
+CREATE TABLE users
+(
+    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 
+    email NVARCHAR NOT NULL UNIQUE, 
+    encrypted_password NVARCHAR NOT NULL, 
+    reset_password_token NVARCHAR, 
+    reset_password_sent_at datetime, 
+    remember_created_at datetime, 
+    sign_in_count INTEGER DEFAULT 0, 
+    current_sign_in_at DATETIME, 
+    last_sign_in_at DATETIME, 
+    current_sign_in_ip NVARCHAR,
+    last_sign_in_ip NVARCHAR, 
+    created_at DATETIME NOT NULL, 
+    updated_at DATETIME NOT NULL, 
+    credit_card_id NVARCHAR,
+    credit_card_description NVARCHAR
+);
+
+SELECT * FROM users;
+
+.schema users
+PRAGMA table_info(users);
+
+.headers on
+.mode column
+SELECT * FROM users;
+
+DROP TABLE "main"."users";
+ALTER TABLE "main"."users" RENAME TO "usersOriginal";
+
+
+CREATE TABLE orders 
+(
+    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 
+    user_id INTEGER,
+    payment_id NVARCHAR, 
+    state NVARCHAR, 
+    amount NVARCHAR, 
+    description NVARCHAR, 
+    created_at DATETIME NOT NULL, 
+    updated_at DATETIME NOT NULL
+);
+
+SELECT * FROM orders;
+
+.schema orders
+PRAGMA table_info(orders);
+
+.headers on
+.mode column
+SELECT * FROM orders;
+
+SELECT * FROM orders WHERE user_id = 1;
+
+SELECT DISTINCT id, * FROM orders WHERE user_id = 1 ORDER BY id DESC LIMIT 1;
+
+SELECT id, user_id, payment_id, state, amount, description, created_at, updated_at FROM orders WHERE user_id = 1 ORDER BY updated_at DESC;
+
+SELECT id, user_id, payment_id, state, amount, description, created_at, updated_at FROM orders WHERE user_id = 1 ORDER BY updated_at DESC, id DESC;
+
+SELECT DISTINCT id, user_id, payment_id, state, amount, description, created_at, updated_at FROM orders WHERE user_id = 1 ORDER BY updated_at DESC, id DESC;
+
+SELECT DISTINCT id, user_id, payment_id, state, amount, description, created_at, updated_at FROM orders WHERE user_id = 1 ORDER BY updated_at DESC, id DESC LIMIT 1;
+
+DROP TABLE "main"."orders";
+ALTER TABLE "main"."orders" RENAME TO "ordersOriginal";
+
+
+
+
+/*
+$ export PATH=$PATH:"/C/Users/rajanis/Downloads/SQLite/sqlite-tools-win32-x86-3330000/"
+
+$ winpty sqlite3 -version
+3.33.0 2020-08-14 13:23:32 fca8dc8b578f215a969cd899336378966156154710873e68b3d9ac5881b0ff3f
+
+$ winpty sqlite3 Database.sqlite3
+SQLite version 3.33.0 2020-08-14 13:23:32
+Enter ".help" for usage hints.
+sqlite> .schema users
+sqlite> PRAGMA table_info(users);
+sqlite> .headers on
+sqlite> .mode column
+sqlite> CREATE TABLE users
+   ...> (
+   ...>     id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+   ...>     email NVARCHAR NOT NULL UNIQUE,
+   ...>     encrypted_password NVARCHAR NOT NULL,
+   ...>     reset_password_token NVARCHAR,
+   ...>     reset_password_sent_at datetime,
+   ...>     remember_created_at datetime,
+   ...>     sign_in_count INTEGER DEFAULT 0,
+   ...>     current_sign_in_at DATETIME,
+   ...>     last_sign_in_at DATETIME,
+   ...>     current_sign_in_ip NVARCHAR,
+   ...>     last_sign_in_ip NVARCHAR,
+   ...>     created_at DATETIME NOT NULL,
+   ...>     updated_at DATETIME NOT NULL,
+   ...>     credit_card_id NVARCHAR,
+   ...>     credit_card_description NVARCHAR
+   ...> );
+sqlite> SELECT * FROM users;
+sqlite> CREATE TABLE orders
+   ...> (
+   ...>     id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+   ...>     user_id INTEGER,
+   ...>     payment_id NVARCHAR,
+   ...>     state NVARCHAR,
+   ...>     amount NVARCHAR,
+   ...>     description NVARCHAR,
+   ...>     created_at DATETIME NOT NULL,
+   ...>     updated_at DATETIME NOT NULL
+   ...> );
+sqlite> SELECT * FROM orders;
+sqlite> .help
+.archive ...             Manage SQL archives
+.auth ON|OFF             Show authorizer callbacks
+.backup ?DB? FILE        Backup DB (default "main") to FILE
+.bail on|off             Stop after hitting an error.  Default OFF
+.binary on|off           Turn binary output on or off.  Default OFF
+.cd DIRECTORY            Change the working directory to DIRECTORY
+.changes on|off          Show number of rows changed by SQL
+.check GLOB              Fail if output since .testcase does not match
+.clone NEWDB             Clone data into NEWDB from the existing database
+.databases               List names and files of attached databases
+.dbconfig ?op? ?val?     List or change sqlite3_db_config() options
+.dbinfo ?DB?             Show status information about the database
+.dump ?TABLE?            Render database content as SQL
+.echo on|off             Turn command echo on or off
+.eqp on|off|full|...     Enable or disable automatic EXPLAIN QUERY PLAN
+.excel                   Display the output of next command in spreadsheet
+.exit ?CODE?             Exit this program with return-code CODE
+.expert                  EXPERIMENTAL. Suggest indexes for queries
+.explain ?on|off|auto?   Change the EXPLAIN formatting mode.  Default: auto
+.filectrl CMD ...        Run various sqlite3_file_control() operations
+.fullschema ?--indent?   Show schema and the content of sqlite_stat tables
+.headers on|off          Turn display of headers on or off
+.help ?-all? ?PATTERN?   Show help text for PATTERN
+.import FILE TABLE       Import data from FILE into TABLE
+.imposter INDEX TABLE    Create imposter table TABLE on index INDEX
+.indexes ?TABLE?         Show names of indexes
+.limit ?LIMIT? ?VAL?     Display or change the value of an SQLITE_LIMIT
+.lint OPTIONS            Report potential schema issues.
+.load FILE ?ENTRY?       Load an extension library
+.log FILE|off            Turn logging on or off.  FILE can be stderr/stdout
+.mode MODE ?TABLE?       Set output mode
+.nullvalue STRING        Use STRING in place of NULL values
+.once ?OPTIONS? ?FILE?   Output for the next SQL command only to FILE
+.open ?OPTIONS? ?FILE?   Close existing database and reopen FILE
+.output ?FILE?           Send output to FILE or stdout if FILE is omitted
+.parameter CMD ...       Manage SQL parameter bindings
+.print STRING...         Print literal STRING
+.progress N              Invoke progress handler after every N opcodes
+.prompt MAIN CONTINUE    Replace the standard prompts
+.quit                    Exit this program
+.read FILE               Read input from FILE
+.recover                 Recover as much data as possible from corrupt db.
+.restore ?DB? FILE       Restore content of DB (default "main") from FILE
+.save FILE               Write in-memory database into FILE
+.scanstats on|off        Turn sqlite3_stmt_scanstatus() metrics on or off
+.schema ?PATTERN?        Show the CREATE statements matching PATTERN
+.selftest ?OPTIONS?      Run tests defined in the SELFTEST table
+.separator COL ?ROW?     Change the column and row separators
+.sha3sum ...             Compute a SHA3 hash of database content
+.shell CMD ARGS...       Run CMD ARGS... in a system shell
+.show                    Show the current values for various settings
+.stats ?on|off?          Show stats or turn stats on or off
+.system CMD ARGS...      Run CMD ARGS... in a system shell
+.tables ?TABLE?          List names of tables matching LIKE pattern TABLE
+.testcase NAME           Begin redirecting output to 'testcase-out.txt'
+.testctrl CMD ...        Run various sqlite3_test_control() operations
+.timeout MS              Try opening locked tables for MS milliseconds
+.timer on|off            Turn SQL timer on or off
+.trace ?OPTIONS?         Output each SQL statement as it is run
+.vfsinfo ?AUX?           Information about the top-level VFS
+.vfslist                 List all available VFSes
+.vfsname ?AUX?           Print the name of the VFS stack
+.width NUM1 NUM2 ...     Set minimum column widths for columnar output
+sqlite> .exit
+*/

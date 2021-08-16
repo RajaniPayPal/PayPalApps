@@ -1,0 +1,4 @@
+PayPal Verbose: 0 : grant_type=client_credentials
+PayPal Error: 0 : Exception in HttpConnection Execute: Invalid HTTP response The request was aborted: Could not create SSL/TLS secure channel., PayPal.Exception.PayPalException: Exception in HttpConnection Execute: Invalid HTTP response The request was aborted: Could not create SSL/TLS secure channel. ---> PayPal.Exception.ConnectionException: Invalid HTTP response The request was aborted: Could not create SSL/TLS secure channel.
+   at PayPal.HttpConnection.Execute(String payLoad, HttpWebRequest httpRequest)
+   --- End of inner exception stack trace ---

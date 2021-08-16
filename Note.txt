@@ -1,0 +1,28 @@
+# Mvc3ASPX.VS.2012
+# Images
+# Mvc3ASPX.VS.2012\Mvc3\
+# Mvc3ASPX.VS.2012\Mvc3\Views\Home\Index.aspx
+# Mvc3ASPX.VS.2012\Mvc3\Controllers\AccountController.cs
+// Install-Package Microsoft.AspNet.Mvc -Version 5.2.7
+using System.Web.Mvc;
+
+# Mvc3ASPX.VS.2010
+# Images
+# Mvc3ASPX.VS.2010\Mvc3
+# Mvc3ASPX.VS.2010\Mvc3\Views\Home\Index.aspx
+# Mvc3ASPX.VS.2010\Mvc3\Controllers\AccountController.cs
+// Remove unresolved references manually # System.Web.Mvc # System.Web.Helpers # System.Web.WebPages
+// Install-Package Microsoft.AspNet.Mvc -Version 3.0.20105.1
+using System.Web.Mvc;
+// Note Required
+/*
+// Microsoft.AspNet.WebPages # 1.0.20105.408
+// Install-Package Microsoft.AspNet.WebPages -Version 1.0.20105.408
+// Microsoft.AspNet.Razor # 2.0.30506
+// Install-Package Microsoft.AspNet.Razor -Version 2.0.30506
+*/
+# For Checking
+1. Tools - NuGet Package Manager - Manage NuGet Packages for Solution
+2. Browse
+3. Search for "Microsoft.AspNet.WebPages"
+4. Make sure all projects in solution have the latest version.
