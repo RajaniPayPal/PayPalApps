@@ -1,4 +1,4 @@
-# PayPal Apps ASP.NET Core MVC, ASP.NET Core Razor Pages, ASP.NET MVC Razor, ASP.NET MVC, ASP.NET
+# PayPal Apps
 
 - Visual Studio 2019, 2013, 2012, 2010, 2008
 - ASP.NET Core MVC, ASP.NET Core Razor Pages, ASP.NET MVC Razor, ASP.NET MVC, ASP.NET
