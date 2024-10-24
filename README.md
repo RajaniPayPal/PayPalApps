@@ -12,11 +12,14 @@ PayPal Apps
 Credits
 -------
 [![image](
-Credits/microsoft.com.svg)](https://microsoft.com/)  
+Credits/microsoft.com.svg)](https://microsoft.com/)<!--[![image](
+Credits/dotnet.microsoft.com.svg)](https://dotnet.microsoft.com/)-->  
 [![image](
 Credits/CS.NET-dotnet.microsoft.com.svg)](https://dotnet.microsoft.com/)  
 [![image](
-Credits/dotnetfoundation.org.svg)](https://dotnetfoundation.org/)   
+Credits/ASP.NET-Core-dotnet.microsoft.com.svg)](https://dotnet.microsoft.com/apps/aspnet/)  
+[![image](
+Credits/sqlite.org.svg)](https://sqlite.org/)  
 [![image](
 Credits/sqlite.org.svg)](https://sqlite.org/)  
 [![image](
