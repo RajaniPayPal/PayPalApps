@@ -19,7 +19,7 @@ Credits/dotnet.microsoft.com.svg)](https://dotnet.microsoft.com/)-->
 [![image](
 Credits/CS.NET-dotnet.microsoft.com.svg)](https://dotnet.microsoft.com/)  
 [![image](
-Credits/CS-dotnet.microsoft.com.svg)](https://dotnet.microsoft.com/)  
+Credits/CS-dotnet.microsoft.com.svg)](https://dotnet.microsoft.com/languages/csharp/)  
 [![image](
 Credits/ASP.NET-Core-dotnet.microsoft.com.svg)](https://dotnet.microsoft.com/apps/aspnet/)  
 [![image](
